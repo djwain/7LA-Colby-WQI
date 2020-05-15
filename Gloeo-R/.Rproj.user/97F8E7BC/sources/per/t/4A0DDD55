@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1581531950510.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4A0DDD55",
+    "lastKnownWriteTime" : 3935408797516819901,
+    "last_content_update" : 1581531950510,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "C1409355",
+        "caption" : "Gloeo",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=Gloeo&cache_key=C1409355",
+        "displayedObservations" : "940",
+        "environment" : "",
+        "expression" : "Gloeo",
+        "object" : "Gloeo",
+        "preview" : "0",
+        "totalObservations" : "940",
+        "variables" : "5"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

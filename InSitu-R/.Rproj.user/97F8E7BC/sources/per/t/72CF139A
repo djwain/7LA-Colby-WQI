@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1579893355072.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3448073627",
+    "id" : "72CF139A",
+    "lastKnownWriteTime" : 1589317176,
+    "last_content_update" : 1589317176950,
+    "path" : "~/Documents/Research/7LA-Colby/Belgrade Lakes/Belgrades-R/InSitu-R/combine_InSitu_files.R",
+    "project_path" : "combine_InSitu_files.R",
+    "properties" : {
+        "cursorPosition" : "8,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}

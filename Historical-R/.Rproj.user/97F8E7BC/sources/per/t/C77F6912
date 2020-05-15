@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1589463900746.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1557853737",
+    "id" : "C77F6912",
+    "lastKnownWriteTime" : 1588113524,
+    "last_content_update" : 1588113524,
+    "path" : "~/Documents/Research/7LA-Colby/Belgrade Lakes/Belgrades-R/Historical-R/plot_belgrade_ice.R",
+    "project_path" : "plot_belgrade_ice.R",
+    "properties" : {
+        "cursorPosition" : "7,14",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

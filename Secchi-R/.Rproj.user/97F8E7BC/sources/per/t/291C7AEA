@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586814852785.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3735189585",
+    "id" : "291C7AEA",
+    "lastKnownWriteTime" : 1577818834,
+    "last_content_update" : 1577818834,
+    "path" : "~/Documents/Research/7LA-Colby/Belgrade Lakes/Belgrades-R/Secchi-R/secchi_vs_P.R",
+    "project_path" : "secchi_vs_P.R",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

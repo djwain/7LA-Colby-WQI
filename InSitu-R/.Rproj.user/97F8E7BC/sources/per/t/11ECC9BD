@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587489143823.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3994908475",
+    "id" : "11ECC9BD",
+    "lastKnownWriteTime" : 1589301409,
+    "last_content_update" : 1589301409743,
+    "path" : "~/Documents/Research/7LA-Colby/Belgrade Lakes/Belgrades-R/InSitu-R/AF_trend.R",
+    "project_path" : "AF_trend.R",
+    "properties" : {
+        "cursorPosition" : "74,76",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}
