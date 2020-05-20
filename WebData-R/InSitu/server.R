@@ -25,11 +25,11 @@ server <- function(input, output, session) {
     
     dat <- switch(input$lake,
                   epdep1 = "data/EPDEP1_2020-05-06_11-17-11_log.csv",
-                  gpdep2 = "data/GPDEP2_2020-04-29_10-25-21_log.csv",
-                  lpdep2 = "data/LPDEP2_2019-10-22_12-30-32_log.csv",
-                  lpdep1 = "data/LPDEP1_2019-10-22_11-43-58_log.csv",
+                  gpdep2 = "data/GPDEP2_2020-05-19_11-41-44_log.csv",
+                  lpdep2 = "data/LPDEP2_2020-05-19_13-31-04_log.csv",
+                  lpdep1 = "data/LPDEP1_2020-05-19_14-56-17_log.csv",
                   mpdep1 = "data/MPDEP1_2020-04-29_12-56-29_log.csv",
-                  messdep1 = "data/MESSDEP1_2020-05-06_12-28-55_log.csv",
+                  messdep1 = "data/MESSDEP1_2020-05-19_10-20-29_log.csv",
                   npdep1 = "data/NPDEP1_2020-05-06_10-09-40_log.csv",
                   spdep1 = "data/SPDEP1_2020-04-29_12-27-05_log.csv"
     )
