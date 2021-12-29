@@ -1,9 +1,13 @@
 {
-    "path" : "~/Documents/Research/7LA-Colby/Belgrade Lakes/Belgrades-R/InSitu-R",
-    "sortOrder" : [
+    "path": "~/Documents/GitHub/7LA-Colby-WQI/InSitu-R",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 4,
+            "ascending": false
+        },
+        {
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }

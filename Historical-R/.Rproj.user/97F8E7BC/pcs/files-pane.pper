@@ -1,13 +1,13 @@
 {
-    "path" : "~/Documents/GitHub/7LA-Colby-WQI/Historical-R",
-    "sortOrder" : [
+    "path": "~/Documents/GitHub/7LA-Colby-WQI/Historical-R/McGrath 2021",
+    "sortOrder": [
         {
-            "ascending" : false,
-            "columnIndex" : 4
+            "columnIndex": 4,
+            "ascending": false
         },
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }

@@ -1,7 +1,7 @@
 {
-    "installOptions" : {
-        "installDependencies" : true,
-        "installFromRepository" : true,
-        "libraryPath" : "/Users/djw56/Library/R/3.6/library"
+    "installOptions": {
+        "installFromRepository": true,
+        "libraryPath": "/Users/djw56/Library/R/4.0/library",
+        "installDependencies": true
     }
 }

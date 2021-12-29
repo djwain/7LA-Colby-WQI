@@ -46,14 +46,14 @@ server <- function(input, output, session) {
     sec <- read_xlsx("data/secchi_2019.xlsx", sheet = site)
 
     dat <- switch(input$lake,
-                  epdep1 = "data/EPDEP1_2020-05-06_11-17-11_log.csv",
-                  gpdep2 = "data/GPDEP2_2020-04-29_10-25-21_log.csv",
-                  lpdep2 = "data/LPDEP2_2019-10-22_12-30-32_log.csv",
-                  lpdep1 = "data/LPDEP1_2019-10-22_11-43-58_log.csv",
-                  mpdep1 = "data/MPDEP1_2020-04-29_12-56-29_log.csv",
-                  messdep1 = "data/MESSDEP1_2020-05-06_12-28-55_log.csv",
-                  npdep1 = "data/NPDEP1_2020-05-06_10-09-40_log.csv",
-                  spdep1 = "data/SPDEP1_2020-04-29_12-27-05_log.csv"
+                  epdep1 = "data/EPDEP1_2020-07-16_16-23-50_log.csv",
+                  gpdep2 = "data/GPDEP1_2020-07-16_12-11-03_log.csv",
+                  lpdep2 = "data/LPDEP2_2020-07-04_16-51-17_log.csv",
+                  lpdep1 = "data/LPDEP1_2020-07-05_16-08-40_log.csv",
+                  mpdep1 = "data/MPDEP1_2020-07-04_10-14-21_log.csv",
+                  messdep1 = "data/MESSDEP1_2020-07-15_15-40-14_log.csv",
+                  npdep1 = "data/NPDEP1_2020-07-03_10-35-54_log.csv",
+                  spdep1 = "data/SPDEP1_2020-07-04_09-41-11_log.csv"
                   )
     
     # The number of header lines is different depending on which device the measurement was taken on.
@@ -84,12 +84,12 @@ server <- function(input, output, session) {
     
     secft <- sec$'Depth(m)'*3.28
     
-    p1 <- ggplot(sec, aes(sec$Date,secft))+
-                   geom_point()+
-                   scale_y_reverse(limits = c(max(Dep2), 0)) +
-                   labs(y = "Depth (ft)",
-                        x = "Date",
-                        title = "Secchi 2019")
+    # p1 <- ggplot(sec, aes(sec$Date,secft))+
+    #                geom_point()+
+    #                scale_y_reverse(limits = c(max(Dep2), 0)) +
+    #                labs(y = "Depth (ft)",
+    #                     x = "Date",
+    #                     title = "Secchi 2019")
     
     p2 <- ggplot(T.prof[1:maxdepi,], aes(T.prof$Temp.F[1:maxdepi], T.prof$Depth.ft[1:maxdepi]))+
       geom_point()+
@@ -107,7 +107,8 @@ server <- function(input, output, session) {
       scale_y_reverse(limits = c(NA, 0))
       
     
-    grid.arrange(p1, p2, p3, nrow = 3)
+    #grid.arrange(p1, p2, p3, nrow = 3)
+    grid.arrange(p2, p3, nrow = 2)
          
   }, width = 470, height = 470*2)
 
