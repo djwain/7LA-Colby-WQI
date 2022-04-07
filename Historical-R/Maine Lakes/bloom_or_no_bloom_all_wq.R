@@ -32,7 +32,7 @@ WQ6 <- WQ5 %>%
   summarize(zsmin = min(zS_m, na.rm = TRUE), 
             zs01 = as.numeric(quantile(zS_m, c(0.01), na.rm = TRUE)),
             Ts = median(Ts_C, na.rm = TRUE),
-            Tb = median(Ts_C, na.rm = TRUE),
+            Tb = median(Tb_C, na.rm = TRUE),
             zT = median(zT_m, na.rm = TRUE),
             zhypox = median(zhypox_m, na.rm = TRUE),
             zanox = median(zanox_m, na.rm = TRUE),

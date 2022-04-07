@@ -8,6 +8,7 @@ library(readxl)
 library(dplyr)
 library(lubridate)
 library(Kendall)
+library(ggplot2)
 
 # Load secchi data from LSM
 filepath <- "/Users/djw56/Documents/Research/7LA-Colby/Belgrade Lakes/Lakes/Belgrades/Historical/"
@@ -73,8 +74,8 @@ sdp <- ggplot(Syr1, aes(YEAR, ft)) +
 sdp <- sdp + geom_hline(yintercept = 13.1, color = "red")
 sdp + geom_hline(yintercept = 26.2, color = "green")
 #labs(title = 'GP1 Secchi, May-Oct Avg, tau = -0.23, p = 0.020') 
-dev.print(png,paste(filepathC,"GP1 Median Secchi.png"),width = 682, res = 150)
-
+#dev.print(png,paste(filepathC,"GP1 Median Secchi.png"),width = 682, res = 150)
+ggsave(paste(filepathC,"GP1 Median Secchi.png"))
 # Plot data and trendline for each
 yhigh<-max(Syr1$yrmed)+2
 

@@ -29,10 +29,11 @@ Morph1 <- Morph
 
 WQ6 <- WQ5 %>%
   group_by(midas, year) %>%
-  summarize(zsmin = min(zS_m, na.rm = TRUE), 
+  summarize(zsmed = median(zS_m, na.rm = TRUE), 
+            zsmin = min(zS_m, na.rm = TRUE), 
             zs01 = as.numeric(quantile(zS_m, c(0.01), na.rm = TRUE)),
             Ts = median(Ts_C, na.rm = TRUE),
-            Tb = median(Ts_C, na.rm = TRUE),
+            Tb = median(Tb_C, na.rm = TRUE),
             zT = median(zT_m, na.rm = TRUE),
             zhypox = median(zhypox_m, na.rm = TRUE),
             zanox = median(zanox_m, na.rm = TRUE),
@@ -49,6 +50,9 @@ WQ6 <- WQ5 %>%
             anox_days = anox_off-anox_on
             )
 
+# ggplot(WQ6, aes(x=zsmed, y=zT)) + 
+#   geom_point() +
+#   geom_smooth(method=lm , color="red", se=FALSE)
             
 WQ7 <- WQ6 %>% filter(!is.na(zs01))
 

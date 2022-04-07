@@ -15,12 +15,13 @@ filename <- paste(filepath,"MaineLakes_Secchi_ByDate.xlsx",sep="")
 dat <- read_excel(filename, sheet = 2)
 
 # MIDAS is identifier for LSM data
-MIDAS1 <- 5274
-SDT_LSM <- dat %>% filter(`Lake Code (MIDAS)` == MIDAS1)
+MIDAS1 <- 5272
+station <- 1
+SDT_LSM <- dat %>% filter(`Lake Code (MIDAS)` == MIDAS1 & STATION == station)
 
 # Load data from Colby
-lake <- 'Great Pond'
-site <- 'GPDEP1'
+lake <- 'Long Pond'
+site <- 'LPDEP1'
 years <- 2015:2021
 filepathC <- paste("~/Documents/Research/7LA-Colby/Belgrade Lakes/Lakes/",lake,sep="","/Transparency/")
 filename1 <- paste(filepathC,site,sep=""," - Secchi 2015-2021.xlsx")
@@ -46,15 +47,12 @@ Secchi$MONTH <- month(a)
 Secchi$DAY <- day(a)  
 Secchi$YDAY <- yday(Secchi$DATE)
 
-
-# Use April 15-Oct 15
-S <- Secchi %>% filter(YDAY >= 105 & YDAY <= 288)
-S <- na.omit(S)
+S <- na.omit(Secchi)
 S <- distinct(S)
 S$`SECCHI DEPTH` <- as.numeric(S$`SECCHI DEPTH`)
 
 # Average data from the same day
-Savgd <- aggregate(`SECCHI DEPTH`~YEAR+MONTH+DAY+STATION, mean, data=S)
+Savgd <- aggregate(`SECCHI DEPTH`~YEAR+MONTH+DAY, mean, data=S)
 
 
 # Compute year median by station

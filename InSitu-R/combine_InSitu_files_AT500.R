@@ -13,8 +13,11 @@ library(janitor)
 library(lubridate)
 
 # Set site details
-site <- 'SPDEP1'
+site <- 'LPDEP1'
 year <- 2021
+
+# Designate where you want the file to go (user-specific)
+outpath <-'/Users/djw56/Dropbox (Personal)/My Mac (ens-help’s MacBook Pro)/Documents/Research/7LA-Colby/Belgrade Lakes/Lakes/Long Pond/RawData/InSitu/LPDEP1/All'
 
 # Select folder where data is
 datapath <- selectDirectory()
@@ -25,7 +28,7 @@ filenames <- dir(datapath)
 # Create output file
 basefile <- paste(site,year,sep="_")
 outfile <- ""
-outfilename <- paste(datapath,paste(basefile,"_InSitu.csv",sep = ""),sep = "")
+outfilename <- paste(outpath,paste(basefile,"_InSitu.csv",sep = ""),sep = "")
 
 # Cycle through files
 for(i in 1:length(filenames)){
@@ -41,44 +44,39 @@ for(i in 1:length(filenames)){
   
   # Add a Year Day column for compatibility across platforms
   yr0 = as.numeric(year) - 1
-  dat2$YearDay <- as.numeric(as.Date(dat$d_t,"%m/%d/%y")-as.Date(0, origin=paste(yr0,"12-31",sep = '-')))
+  YearDay <- as.numeric(as.Date(dat$Date.Time,"%m/%d/%y")-as.Date(0, origin=paste(yr0,"12-31",sep = '-')))
   
   # The serial numbers (specific to each probe) are part of the column names.
-  # To combine, we need to rename them.
-  z_m <- dat[,grepl( "Depth" , names( dat ) ) ]
-  lat <- dat[,grepl( "Latitude" , names( dat ) ) ]
-  lon <- dat[,grepl( "Latitude" , names( dat ) ) ]
+  # To combine files from both probes, we need to rename them.
+  Z_m <- dat[,grepl( "Depth" , names( dat ) ) ]
+  Lat <- dat[,grepl( "Latitude" , names( dat ) ) ]
+  Lon <- dat[,grepl( "Latitude" , names( dat ) ) ]
   T_C <-  dat[,grepl( "Temperature...C...754" , names( dat ) ) ]
   DO_ppm <-  dat[,grepl( "RDO.C" , names( dat ) ) ]
   DO_sat <-  dat[,grepl( "RDO.S" , names( dat ) ) ]
-    
+  Turb_NTU <- dat[,grepl( "Turbidity" , names( dat ) ) ]
+  TSS_ppm <- dat[,grepl( "Suspended" , names( dat ) ) ]
+  AcCond_uScm <- dat[,grepl( "Actual" , names( dat ) ) ]
+  SpCond_uScm <- dat[,grepl( "Specific" , names( dat ) ) ]
+  Sal_psu <- dat[,grepl( "Salinity" , names( dat ) ) ]
+  TDS_ppt <- dat[,grepl( "Dissolved" , names( dat ) ) ]
+  Dens_gcm3 <- dat[,grepl( "Density" , names( dat ) ) ]
+  Chla_RFU <- dat[,grepl( "Fluorescence" , names( dat ) ) ]
+  Chla_ugL <- dat[,grepl( "a.Conc" , names( dat ) ) ]
   
-  
-  # Rename columns with data I need so that it doesn't matter what instrument is being used
-  z_m <- dat[,grepl( "Depth" , names( dat ) ) ]
+  # Recombine into new dataframs
+  dat1 <- cbind(YearDay,Z_m,Lat,Lon,T_C,DO_ppm,DO_sat,Turb_NTU,TSS_ppm,AcCond_uScm,
+                SpCond_uScm,Sal_psu,TDS_ppt,Dens_gcm3,Chla_RFU,Chla_ugL)
   
   # Trim data so only downcast is used
-  maxdepi <-which.max(z_m)
-  dat <- dat[1:maxdepi,]
-  z_m <- z_m[1:maxdepi]
-  
-  T_C <-  dat[,grepl( "Temp" , names( dat ) ) ]
-  T_C <- T_C[,1]
-  
-  DO_ppm <-  dat[,grepl( "RDO" , names( dat ) ) ]
-  DO_ppm <- DO_ppm[,1]
-  
-  YearDay <- dat$YearDay
-  
-  dat1 <- cbind(YearDay,z_m,T_C,DO_ppm)
+  maxdepi <-which.max(Z_m)
+  dat1 <- dat1[1:maxdepi,]
 
-  
-  outfile <- rbind(outfile, dat1)
+  outfile <- as.data.frame(rbind(outfile, dat1))
   
 } 
   
 rownames(outfile) <- NULL
-
 write.csv(outfile, outfilename)
-write.csv(outfile, outfilename2)
+
 
