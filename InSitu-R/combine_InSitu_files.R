@@ -5,9 +5,9 @@
 library(stringr)
 library(dplyr)
 
-lake <- 'Salmon'
-site <- 'SPDEP1'
-year <- '2020'
+lake <- 'Messalonskee'
+site <- 'MESSDEP1'
+year <- '2019'
 
 basefile <- paste(site,year,sep="_")
 

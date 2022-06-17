@@ -10,6 +10,10 @@ library(lubridate)
 library(Kendall)
 library(ggplot2)
 
+# Set wd
+setwd("~/Documents/GitHub/7LA-Colby-WQI/Historical-R/Great Pond")
+
+
 # Load secchi data from LSM
 filepath <- "/Users/djw56/Documents/Research/7LA-Colby/Belgrade Lakes/Lakes/Belgrades/Historical/"
 filename <- paste(filepath,"MaineLakes_Secchi_ByDate.xlsx",sep="")

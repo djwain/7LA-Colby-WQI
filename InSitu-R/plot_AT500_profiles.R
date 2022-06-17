@@ -4,7 +4,7 @@
 library(stringr)
 library(ggplot2)
 
-dat <- read.csv(file.choose(new = FALSE), skip =  20,header = FALSE, stringsAsFactors = FALSE)
+dat <- read.csv(file.choose(new = FALSE), skip =  19,header = FALSE, stringsAsFactors = FALSE)
 colnames(dat) <- c('Date','Chl-a Fluor','Turb','Depth','Temp','Act Cond','Spec Cond','Sal','Res','Dens','TDS','RDO Conc',
               'RDO Sat','OPP','junk','Pres','junk3','junk2','Chla.Conc','TSS','a')
 

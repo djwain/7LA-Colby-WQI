@@ -1,17 +1,17 @@
 # Create data frame with the Maine lakes historical data
 # DJW 4/28/21
 
-# Create a data frame that contains monthlu average data from April - Oct
+# Create a data frame that contains merges all Maine Lakes data calculates a few metrics
 # zS_m = Secchi disk transparency (m)
-# Ts_C = Surface Temperature (C)
-# Tb_C = Bottom Temperature (C)
-# DOb_ppm = Bottom DO (ppm)
+# Ts_C = Surface Temperature (C) (average of z <= 1 m)
 # zT_m = Thermocline Depth (m) - first depth where dT/dz >= 1 C/m
 # zhypox_m = Hypoxic Depth (m) - first depth where DO < 5
 # zanox_m = Anoxic Depth (m) - first depth where DO < 2
 # Ps_ppb = Surface phosphorus (ppb) from epicores
 # Pb_ppb = Bottom Phosphorus (ppb) from bottom grabs
+# Chla_ppb = Chlorophyll-a concentration (ppb) from epicore
 
+setwd("~/Documents/GitHub/7LA-Colby-WQI/Historical-R/Maine Lakes")
 
 # Load packages
 library(readxl)
@@ -19,8 +19,7 @@ library(tidyverse)
 library(lubridate)
 
 # Load secchi data from LSM
-filepath <- "/Users/djw56/Dropbox (Personal)/Belgrade Lakes Stats/Maine Lake Data/"
-filename0 <- paste(filepath,"MaineLakes_Secchi_ByDate.xlsx",sep="")
+filename0 <- paste("MaineLakes_Secchi_ByDate.xlsx",sep="")
 S0 <- read_excel(filename0, sheet = 2)
 
 S1 <- S0 %>% filter(STATION == 1)
@@ -33,7 +32,7 @@ S2$yday <- yday(a)
 WQ0 <- S2 %>% select(midas, year, month, yday, zS_m )
 
 # Load TO data from LSM
-filename1 <- paste(filepath,"MaineLakes_Temp_DO.xlsx",sep="")
+filename1 <- paste("MaineLakes_Temp_DO.xlsx",sep="")
 T0 <- read_excel(filename1, sheet = 2)
 
 T1 <- T0 %>% filter(STATION == 1)
@@ -83,7 +82,7 @@ T12 <- T11 %>% select(midas, year, month, yday, zhypox_m, zanox_m )
 WQ3 <- merge(WQ2, T12, all = TRUE)
 
 # Load TP data from LSM
-filename2 <- paste(filepath,"MaineLakes_Phosphorus.xlsx",sep="")
+filename2 <- paste("MaineLakes_Phosphorus.xlsx",sep="")
 P0 <- read_excel(filename2, sheet = 2)
 
 P1 <- P0 %>% filter(Station == 1)
@@ -115,6 +114,26 @@ P9 <- P8 %>% select(midas, year, month, yday, Pb_ppb )
 
 WQ5 <- merge(WQ4, P9, all = TRUE)
 
-save(WQ5,file = "ME_daily_metrics.Rda")
+# Load Chl-a data from LSM and find core data
+filename3 <- paste("MaineLakes_Chlorophyll_ByDate.xlsx",sep="")
+C0 <- read_excel(filename3, sheet = 2)
+
+C1 <- C0 %>% filter(Station == 1)
+
+C2 <- C1 %>% filter(`Sample Type` == "C")
+C3 <- C2 %>% group_by(MIDAS, Date) %>% summarize(Chla_ppb = CHLA) %>% ungroup
+
+C4 <- C3 %>% rename(midas = MIDAS)
+a <- ymd(C4$Date)
+C4$year <- year(a)
+C4$month <- month(a)
+C4$yday <- yday(a)
+
+C5 <- C4 %>% select(midas, year, month, yday, Chla_ppb )
+
+WQ6 <- merge(WQ5, C5, all = TRUE)
+
+
+save(WQ6,file = "ME_daily_metrics.Rda")
 
 
